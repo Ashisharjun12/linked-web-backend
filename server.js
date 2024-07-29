@@ -24,6 +24,10 @@ const port = 5000;
 const userSocketMap = {};
 const roomCodeMap = {}; // To keep track of the code for each room
 
+app.get( '/', (req,res)=>{
+    res.json({success:true, msg:"hello from server"})
+})
+
 function getAllConnectedClients(roomId) {
   return Array.from(io.sockets.adapter.rooms.get(roomId) || []).map((socketId) => ({
     socketId,
